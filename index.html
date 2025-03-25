@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio de OLOJEDE Samuel</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("sHifVwT74QmdYTyUd");
+        })();
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            document.body.style.display = "block";
+        });
+    </script>
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#2563EB', // Bleu vibrant
+                        secondary: '#E11D48', // Rouge vif
+                        accent: '#06B6D4', // Turquoise
+                    },
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 1s ease-in-out',
+                        'slide-up': 'slideUp 0.8s ease-out',
+                        'slide-right': 'slideRight 0.8s ease-out',
+                        'slide-left': 'slideLeft 0.8s ease-out',
+                        'bounce-slow': 'bounce 3s infinite',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(50px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        },
+                        slideRight: {
+                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                        slideLeft: {
+                            '0%': { transform: 'translateX(50px)', opacity: '0' },
+                            '100%': { transform: 'translateX(0)', opacity: '1' },
+                        },
+                    },
+                }
+            }
+        };
+
+        // Check for dark mode preference
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.documentElement.classList.add('dark');
+        }
+        
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
+            if (event.matches) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        });
+    </script>
+</head>
+<body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
+    <!-- Header/Navigation -->
+    <header class="fixed w-full z-50 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm shadow-sm">
+        <div class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <a href="#" class="text-2xl font-bold text-primary dark:text-primary">
+                <span class="text-secondary">Port</span>_folio
+            </a>
+            
+            <!-- Mobile Menu Button -->
+            <button id="menu-toggle" class="md:hidden text-gray-800 dark:text-gray-200">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            
+            <!-- Desktop Navigation -->
+            <nav class="hidden md:block">
+                <ul class="flex space-x-6">
+                    <li><a href="#accueil" class="hover:text-primary transition nav-link">Accueil</a></li>
+                    <li><a href="#a-propos" class="hover:text-primary transition nav-link">À propos</a></li>
+                    <li><a href="#services" class="hover:text-primary transition nav-link">Services</a></li>
+                    <li><a href="#contact" class="hover:text-primary transition nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <nav id="mobile-menu" class="hidden bg-white dark:bg-gray-800 md:hidden">
+            <ul class="container mx-auto px-4 py-3 space-y-3">
+                <li><a href="#accueil" class="block hover:text-primary transition nav-link">Accueil</a></li>
+                <li><a href="#a-propos" class="block hover:text-primary transition nav-link">À propos</a></li>
+                <li><a href="#services" class="block hover:text-primary transition nav-link">Services</a></li>
+                <li><a href="#contact" class="block hover:text-primary transition nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="accueil" class="min-h-screen pt-24 pb-16 flex items-center relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-full h-full z-0 bg-gradient-to-bl from-primary/10 to-transparent dark:from-primary/5 animate-pulse-slow parallax-bg"></div>
+        
+        <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
+            <div class="order-2 md:order-1 animate-slide-right">
+                <p class="text-lg mb-2 animate__animated animate__fadeIn">Salut, je suis</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                    OLOJEDE Samuel
+                </h1>
+                <h2 class="text-xl md:text-2xl mb-6 text-secondary dark:text-accent animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                    Administrateur Systèmes et Réseaux Informatiques
+                </h2>
+                <p class="mb-8 text-gray-600 dark:text-gray-400 max-w-lg animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
+                    Bienvenue sur mon portfolio. Je suis spécialisé dans l'administration et la gestion des infrastructures informatiques.
+                </p>
+                <div class="flex flex-wrap gap-4 animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
+                    <a href="#contact" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition shadow-lg hover:shadow-xl hover:-translate-y-1 duration-300 btn-hover">
+                        Me contacter
+                    </a>
+                    <a href="#" id="download-cv" class="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-lg transition hover:-translate-y-1 duration-300 btn-hover" target="_blank">
+                        Télécharger CV
+                    </a>
+                </div>
+            </div>
+            <div class="flex justify-center order-1 md:order-2 animate-slide-left">
+                <div class="relative w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-primary/30 shadow-xl animate-bounce-slow profile-image">
+                    <img src="KING-removebg-preview.png" alt="OLOJEDE Samuel" class="w-full h-full object-cover">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="a-propos" class="py-16 bg-gray-50 dark:bg-gray-800/50 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title">À propos de moi</h2>
+            
+            <div class="max-w-3xl mx-auto">
+                <div class="mb-8 animate-on-scroll" data-animation="fade-up" style="animation-delay: 0.2s">
+                    <p class="text-lg mb-4">
+                        Étudiant en deuxième année d'informatique à ESGIS, je me spécialise dans les systèmes et réseaux informatiques.
+                    </p>
+                    <p class="text-lg mb-4">
+                        En tant qu'Administrateur Système et Réseau, je possède des compétences avancées en gestion d'infrastructure, 
+                        sécurité des réseaux, et résolution de problèmes techniques complexes.
+                    </p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md animate-on-scroll card-hover" data-animation="fade-right" style="animation-delay: 0.4s">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center">
+                            <i class="fas fa-graduation-cap mr-2 text-primary"></i>
+                            Formation
+                        </h3>
+                        <ul class="space-y-2">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>2ème Année Informatique à ESGIS</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
+                                <span>Spécialisation en Systèmes et Réseaux</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md animate-on-scroll card-hover" data-animation="fade-left" style="animation-delay: 0.4s">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center">
+                            <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
+                            Localisation
+                        </h3>
+                        <p>Addidogomé-Gblinkomè</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-16 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title">Mes Services</h2>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.1s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                        <i class="fas fa-network-wired text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Commutation</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Configuration et gestion des commutateurs réseau pour optimiser la communication interne.
+                    </p>
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                        Demander un devis
+                        <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.2s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                        <i class="fas fa-route text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Routage</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Mise en place et configuration de solutions de routage pour des réseaux efficaces et sécurisés.
+                    </p>
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                        Demander un devis
+                        <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.3s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                        <i class="fas fa-tools text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Installation et Dépannage</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Installation, maintenance et dépannage d'infrastructures réseau complètes.
+                    </p>
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                        Demander un devis
+                        <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.4s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                        <i class="fas fa-bug text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Résolution de Problèmes Réseau</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Diagnostic et résolution des problèmes tels que bouclage, coupures de câbles et autres dysfonctionnements.
+                    </p>
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                        Demander un devis
+                        <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.5s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                        <i class="fas fa-shield-alt text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Sécurité Réseau</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Mise en place de solutions de sécurité pour protéger vos infrastructures contre les menaces.
+                    </p>
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                        Demander un devis
+                        <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.6s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                        <i class="fas fa-server text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3">Administration Système</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                        Gestion et maintenance des serveurs et systèmes d'exploitation pour assurer leur bon fonctionnement.
+                    </p>
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                        Demander un devis
+                        <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800/50 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title">Me Contacter</h2>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                <div class="animate-on-scroll" data-animation="fade-right" style="animation-delay: 0.2s">
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md mb-6 hover:shadow-lg transition-all duration-300 contact-card">
+                        <h3 class="text-xl font-semibold mb-4">Informations de Contact</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="flex items-start hover:-translate-y-1 transition-transform duration-300 contact-info">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 shrink-0 contact-icon">
+                                    <i class="fas fa-phone text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Téléphone</p>
+                                    <a href="tel:+22897831101" class="text-gray-600 dark:text-gray-400 hover:text-primary transition">+228 97 83 11 01</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start hover:-translate-y-1 transition-transform duration-300 contact-info">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 shrink-0 contact-icon">
+                                    <i class="fas fa-envelope text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Email</p>
+                                    <a href="mailto:olojedesamuel09@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-primary transition">olojedesamuel09@gmail.com</a>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start hover:-translate-y-1 transition-transform duration-300 contact-info">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 shrink-0 contact-icon">
+                                    <i class="fas fa-map-marker-alt text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Adresse</p>
+                                    <p class="text-gray-600 dark:text-gray-400">Addidogomé-Gblinkomè</p>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-start hover:-translate-y-1 transition-transform duration-300 contact-info">
+                                <div class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mr-4 shrink-0 contact-icon">
+                                    <i class="fas fa-globe text-primary"></i>
+                                </div>
+                                <div>
+                                    <p class="font-medium">Site Web</p>
+                                    <a href="http://olo05.netlify.app" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-primary transition">olo05.netlify.app</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 social-card">
+                        <h3 class="text-xl font-semibold mb-4">Réseaux Sociaux</h3>
+                        
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition hover:scale-110 transform duration-300 social-icon">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition hover:scale-110 transform duration-300 social-icon">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition hover:scale-110 transform duration-300 social-icon">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition hover:scale-110 transform duration-300 social-icon">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll form-container" data-animation="fade-left" style="animation-delay: 0.3s">
+                    <h3 class="text-xl font-semibold mb-4">Envoyez-moi un message</h3>
+                    
+                    <form id="contact-form" class="space-y-4">
+                        <div class="form-group transform transition-all duration-500 hover:-translate-y-1">
+                            <label for="name" class="block text-sm font-medium mb-1">Nom complet</label>
+                            <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-base transition duration-300" required>
+                        </div>
+                        
+                        <div class="form-group transform transition-all duration-500 hover:-translate-y-1">
+                            <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                            <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-base transition duration-300" required>
+                        </div>
+                        
+                        <div class="form-group transform transition-all duration-500 hover:-translate-y-1">
+                            <label for="subject" class="block text-sm font-medium mb-1">Sujet</label>
+                            <input type="text" id="subject" name="subject" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-base transition duration-300" required>
+                        </div>
+                        
+                        <div class="form-group transform transition-all duration-500 hover:-translate-y-1">
+                            <label for="message" class="block text-sm font-medium mb-1">Message</label>
+                            <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-base resize-none transition duration-300" required></textarea>
+                        </div>
+                        
+                        <button type="submit" id="submit-btn" class="w-full px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center hover:shadow-lg hover:-translate-y-1 transform submit-btn">
+                            <span id="btn-text">Envoyer le message</span>
+                            <span id="loading-spinner" class="hidden ml-2">
+                                <i class="fas fa-circle-notch fa-spin"></i>
+                            </span>
+                        </button>
+                        
+                        <div id="form-message" class="hidden p-3 rounded-lg text-center font-medium"></div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer-pied de page  -->
+    <footer class="bg-gray-900 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-4 md:mb-0">
+                    <p class="text-lg font-semibold">
+                        <span class="text-secondary">OLOJEDE</span> Samuel
+                    </p>
+                    <p class="text-gray-400">Administrateur Systèmes et Réseaux</p>
+                </div>
+                
+                <div class="text-center md:text-right">
+                    <p>© 2024 Tous droits réservés</p>
+                    <p class="text-gray-400">Conçu avec <span class="animate-pulse text-red-500">❤</span> par <strong>OLOJEDE Samuel</strong></p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- work.js-->
+    <script src="work.js"></script>
+</body>
+</html>
