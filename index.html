@@ -8,8 +8,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="style.css">
+    
+<!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function() {
+            emailjs.init("sHifVwT74QmdYTyUd");
+        })();
+    </script>
 
-<!--Script-->
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.body.style.display = "block";
@@ -22,9 +29,9 @@
             theme: {
                 extend: {
                     colors: {
-                        primary: '#2563EB', 
-                        secondary: '#E11D48',
-                        accent: '#06B6D4', 
+                        primary: '#2563EB', // Bleu vibrant
+                        secondary: '#E11D48', // Rouge vif
+                        accent: '#06B6D4', // Turquoise
                     },
                     fontFamily: {
                         sans: ['Poppins', 'sans-serif'],
@@ -59,7 +66,7 @@
             }
         };
 
-        
+        // Check for dark mode preference
         if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
             document.documentElement.classList.add('dark');
         }
@@ -72,9 +79,6 @@
             }
         });
     </script>
-
-
-
 
     
 </head>
