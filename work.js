@@ -15,12 +15,6 @@ document.addEventListener("keydown", event => {
     }
 });
 
- //EmailJS Script Par OLOJEDE Samuel 
-  
-        (function() {
-            emailjs.init("sHifVwT74QmdYTyUd");
-        })();
-
 
 // Mobile menu toggle
 function setupMobileMenu() {
