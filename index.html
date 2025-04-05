@@ -8,79 +8,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
     <link rel="stylesheet" href="style.css">
-    
-<!-- EmailJS -->
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
-    <script type="text/javascript">
-        (function() {
-            emailjs.init("sHifVwT74QmdYTyUd");
-        })();
-    </script>
-
-    <script>
-        document.addEventListener("DOMContentLoaded", function() {
-            document.body.style.display = "block";
-        });
-    </script>
-    
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    colors: {
-                        primary: '#2563EB', // Bleu vibrant
-                        secondary: '#E11D48', // Rouge vif
-                        accent: '#06B6D4', // Turquoise
-                    },
-                    fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
-                    },
-                    animation: {
-                        'fade-in': 'fadeIn 1s ease-in-out',
-                        'slide-up': 'slideUp 0.8s ease-out',
-                        'slide-right': 'slideRight 0.8s ease-out',
-                        'slide-left': 'slideLeft 0.8s ease-out',
-                        'bounce-slow': 'bounce 3s infinite',
-                        'pulse-slow': 'pulse 3s infinite',
-                    },
-                    keyframes: {
-                        fadeIn: {
-                            '0%': { opacity: '0' },
-                            '100%': { opacity: '1' },
-                        },
-                        slideUp: {
-                            '0%': { transform: 'translateY(50px)', opacity: '0' },
-                            '100%': { transform: 'translateY(0)', opacity: '1' },
-                        },
-                        slideRight: {
-                            '0%': { transform: 'translateX(-50px)', opacity: '0' },
-                            '100%': { transform: 'translateX(0)', opacity: '1' },
-                        },
-                        slideLeft: {
-                            '0%': { transform: 'translateX(50px)', opacity: '0' },
-                            '100%': { transform: 'translateX(0)', opacity: '1' },
-                        },
-                    },
-                }
-            }
-        };
-
-        // Check for dark mode preference
-        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            document.documentElement.classList.add('dark');
-        }
-        
-        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', event => {
-            if (event.matches) {
-                document.documentElement.classList.add('dark');
-            } else {
-                document.documentElement.classList.remove('dark');
-            }
-        });
-    </script>
-
-    
 </head>
 <body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
     <!-- Header/Navigation -->
@@ -123,21 +50,21 @@
         
         <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
             <div class="order-2 md:order-1 animate-slide-right">
-                <p class="text-lg mb-2 animate__animated animate__fadeIn">Salut, je suis</p>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
+                <p class="text-lg mb-2">Salut, je suis</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4">
                     OLOJEDE Samuel
                 </h1>
-                <h2 class="text-xl md:text-2xl mb-6 text-secondary dark:text-accent animate__animated animate__fadeInUp" style="animation-delay: 0.4s">
+                <h2 class="text-xl md:text-2xl mb-6 text-secondary dark:text-accent">
                     Administrateur Systèmes et Réseaux Informatiques
                 </h2>
-                <p class="mb-8 text-gray-600 dark:text-gray-400 max-w-lg animate__animated animate__fadeInUp" style="animation-delay: 0.6s">
+                <p class="mb-8 text-gray-600 dark:text-gray-400 max-w-lg">
                     Bienvenue sur mon portfolio. Je suis spécialisé dans l'administration et la gestion des infrastructures informatiques.
                 </p>
-                <div class="flex flex-wrap gap-4 animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
+                <div class="flex flex-wrap gap-4">
                     <a href="#contact" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition shadow-lg hover:shadow-xl hover:-translate-y-1 duration-300 btn-hover">
                         Me contacter
                     </a>
-                    <a href="#" id="download-cv" class="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-lg transition hover:-translate-y-1 duration-300 btn-hover" target="_blank">
+                    <a href="#" id="download-cv" class="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-lg transition hover:-translate-y-1 duration-300 btn-hover">
                         Télécharger CV
                     </a>
                 </div>
@@ -156,7 +83,7 @@
             <h2 class="text-3xl font-bold text-center mb-12 section-title">À propos de moi</h2>
             
             <div class="max-w-3xl mx-auto">
-                <div class="mb-8 animate-on-scroll" data-animation="fade-up" style="animation-delay: 0.2s">
+                <div class="mb-8 animate-on-scroll" data-animation="fade-up">
                     <p class="text-lg mb-4">
                         Étudiant en deuxième année d'informatique à ESGIS, je me spécialise dans les systèmes et réseaux informatiques.
                     </p>
@@ -167,7 +94,7 @@
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md animate-on-scroll card-hover" data-animation="fade-right" style="animation-delay: 0.4s">
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md animate-on-scroll card-hover" data-animation="fade-right">
                         <h3 class="text-xl font-semibold mb-3 flex items-center">
                             <i class="fas fa-graduation-cap mr-2 text-primary"></i>
                             Formation
@@ -184,7 +111,7 @@
                         </ul>
                     </div>
                     
-                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md animate-on-scroll card-hover" data-animation="fade-left" style="animation-delay: 0.4s">
+                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md animate-on-scroll card-hover" data-animation="fade-left">
                         <h3 class="text-xl font-semibold mb-3 flex items-center">
                             <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
                             Localisation
@@ -202,7 +129,7 @@
             <h2 class="text-3xl font-bold text-center mb-12 section-title">Mes Services</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.1s">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-network-wired text-2xl text-primary"></i>
                     </div>
@@ -216,7 +143,7 @@
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.2s">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-route text-2xl text-primary"></i>
                     </div>
@@ -230,7 +157,7 @@
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.3s">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-tools text-2xl text-primary"></i>
                     </div>
@@ -244,7 +171,7 @@
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.4s">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-bug text-2xl text-primary"></i>
                     </div>
@@ -258,7 +185,7 @@
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.5s">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-shield-alt text-2xl text-primary"></i>
                     </div>
@@ -272,7 +199,7 @@
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.6s">
+                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in">
                     <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-server text-2xl text-primary"></i>
                     </div>
@@ -295,7 +222,7 @@
             <h2 class="text-3xl font-bold text-center mb-12 section-title">Me Contacter</h2>
             
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
-                <div class="animate-on-scroll" data-animation="fade-right" style="animation-delay: 0.2s">
+                <div class="animate-on-scroll" data-animation="fade-right">
                     <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md mb-6 hover:shadow-lg transition-all duration-300 contact-card">
                         <h3 class="text-xl font-semibold mb-4">Informations de Contact</h3>
                         
@@ -362,7 +289,7 @@
                     </div>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll form-container" data-animation="fade-left" style="animation-delay: 0.3s">
+                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll form-container" data-animation="fade-left">
                     <h3 class="text-xl font-semibold mb-4">Envoyez-moi un message</h3>
                     
                     <form id="contact-form" class="space-y-4">
@@ -400,7 +327,7 @@
         </div>
     </section>
 
-    <!-- Footer-pied de page  -->
+    <!-- Footer -->
     <footer class="bg-gray-900 text-white py-8">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
@@ -419,7 +346,7 @@
         </div>
     </footer>
 
-    <!-- work.js-->
+    <!-- Script externe -->
     <script src="work.js"></script>
 </body>
 </html>
