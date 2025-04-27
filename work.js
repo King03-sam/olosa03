@@ -1,36 +1,5 @@
-// Configuration initiale
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialiser tous les composants
-    initMobileMenu();
-    initSmoothScrolling();
-    initScrollAnimations();
-    initParallaxEffect();
-    initActiveLinkHighlighting();
-    initServiceCardAnimations();
-    initContactForm();
-    initCVDownload();
-    initTypingAnimation();
-    initDarkModeToggle();
-    initProjects();
-    initLanguageToggle();
-    initBackToTopButton();
-    
-    // Afficher le body après chargement
-    document.body.style.display = 'block';
-    
-    // Message de bienvenue dans la console
-    console.log(
-        "%cBienvenue sur le portfolio de OLOJEDE Samuel!",
-        "color: #2563EB; font-size: 20px; font-weight: bold;"
-    );
-    console.log(
-        "%cCe site a été conçu avec ❤️ par OLOJEDE Samuel",
-        "color: #666; font-size: 14px;"
-    );
-});
-
-// Menu mobile
-function initMobileMenu() {
+    // Mobile menu
     const menuToggle = document.getElementById('menu-toggle');
     const mobileMenu = document.getElementById('mobile-menu');
     
@@ -39,17 +8,14 @@ function initMobileMenu() {
             mobileMenu.classList.toggle('hidden');
         });
         
-        // Fermer le menu mobile après clic sur un lien
         document.querySelectorAll('#mobile-menu a').forEach(link => {
             link.addEventListener('click', () => {
                 mobileMenu.classList.add('hidden');
             });
         });
     }
-}
 
-// Défilement fluide
-function initSmoothScrolling() {
+    // Smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function(e) {
             e.preventDefault();
@@ -63,15 +29,12 @@ function initSmoothScrolling() {
                     behavior: 'smooth'
                 });
                 
-                // Mettre à jour l'URL sans rechargement
                 window.history.pushState(null, null, targetId);
             }
         });
     });
-}
 
-// Animations au défilement
-function initScrollAnimations() {
+    // Scroll animations
     const animateElements = document.querySelectorAll('.animate-on-scroll');
     const sectionTitles = document.querySelectorAll('.section-title');
     
@@ -97,10 +60,8 @@ function initScrollAnimations() {
     
     checkVisibility();
     window.addEventListener('scroll', checkVisibility);
-}
 
-// Effet parallaxe
-function initParallaxEffect() {
+    // Parallax effect
     const parallaxElements = document.querySelectorAll('.parallax-bg');
     
     window.addEventListener('scroll', () => {
@@ -112,10 +73,8 @@ function initParallaxEffect() {
             element.style.transform = `translateY(${offset}px)`;
         });
     });
-}
 
-// Mise en évidence des liens actifs
-function initActiveLinkHighlighting() {
+    // Active link highlighting
     const sections = document.querySelectorAll('section[id]');
     const navLinks = document.querySelectorAll('.nav-link');
     
@@ -140,10 +99,8 @@ function initActiveLinkHighlighting() {
     
     highlightActiveLink();
     window.addEventListener('scroll', highlightActiveLink);
-}
 
-// Animations des cartes de service
-function initServiceCardAnimations() {
+    // Service card animations
     const serviceCards = document.querySelectorAll('.service-card');
     
     serviceCards.forEach(card => {
@@ -158,10 +115,8 @@ function initServiceCardAnimations() {
             });
         }
     });
-}
 
-// Formulaire de contact avec EmailJS
-function initContactForm() {
+    // Contact form
     const contactForm = document.getElementById('contact-form');
     
     if (contactForm) {
@@ -173,13 +128,11 @@ function initContactForm() {
         contactForm.addEventListener('submit', function(e) {
             e.preventDefault();
             
-            // État de chargement
             if (btnText) btnText.textContent = getCurrentLanguage() === 'fr' ? 'Envoi en cours...' : 'Sending...';
             if (loadingSpinner) loadingSpinner.classList.remove('hidden');
             if (submitBtn) submitBtn.disabled = true;
             if (formMessage) formMessage.classList.add('hidden');
             
-            // Données du formulaire
             const templateParams = {
                 from_name: document.getElementById('name')?.value || '',
                 from_email: document.getElementById('email')?.value || '',
@@ -187,89 +140,52 @@ function initContactForm() {
                 message: document.getElementById('message')?.value || ''
             };
             
-            console.log("Tentative d'envoi avec paramètres:", templateParams);
-            
-            // Envoi avec EmailJS
             if (window.emailjs) {
                 emailjs.send('service_zmcf9ln', 'template_qtzwcq7', templateParams)
                     .then(function(response) {
-                        console.log('SUCCESS!', response.status, response.text);
-                        
                         if (formMessage) {
                             formMessage.textContent = getCurrentLanguage() === 'fr' ? 
-                                'Message envoyé avec succès! Je vous répondrai dès que possible.' : 
-                                'Message sent successfully! I will get back to you as soon as possible.';
+                                'Message envoyé avec succès!' : 
+                                'Message sent successfully!';
                             formMessage.classList.remove('hidden', 'bg-red-100', 'text-red-600');
-                            formMessage.classList.add('bg-green-100', 'text-green-600', 'animate__animated', 'animate__fadeIn');
+                            formMessage.classList.add('bg-green-100', 'text-green-600');
                         }
                         
                         contactForm.reset();
                     }, function(error) {
-                        console.log('FAILED...', error);
-                        
                         if (formMessage) {
                             formMessage.textContent = getCurrentLanguage() === 'fr' ? 
-                                "Erreur d'envoi: " + error.text : 
-                                "Sending error: " + error.text;
+                                "Erreur d'envoi" : 
+                                "Sending error";
                             formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-600');
-                            formMessage.classList.add('bg-red-100', 'text-red-600', 'animate__animated', 'animate__shakeX');
+                            formMessage.classList.add('bg-red-100', 'text-red-600');
                         }
                     })
                     .finally(function() {
                         if (btnText) {
-                            const btnTextContent = btnText.getAttribute('data-' + getCurrentLanguage());
-                            btnText.textContent = btnTextContent || (getCurrentLanguage() === 'fr' ? 'Envoyer le message' : 'Send message');
+                            btnText.textContent = getCurrentLanguage() === 'fr' ? 
+                                'Envoyer le message' : 'Send message';
                         }
                         if (loadingSpinner) loadingSpinner.classList.add('hidden');
                         if (submitBtn) submitBtn.disabled = false;
                     });
-            } else {
-                console.error("EmailJS n'est pas chargé");
-                if (formMessage) {
-                    formMessage.textContent = getCurrentLanguage() === 'fr' ? 
-                        "Erreur: EmailJS n'est pas disponible" : 
-                        "Error: EmailJS is not available";
-                    formMessage.classList.remove('hidden', 'bg-green-100', 'text-green-600');
-                    formMessage.classList.add('bg-red-100', 'text-red-600', 'animate__animated', 'animate__shakeX');
-                }
-                
-                if (btnText) {
-                    const btnTextContent = btnText.getAttribute('data-' + getCurrentLanguage());
-                    btnText.textContent = btnTextContent || (getCurrentLanguage() === 'fr' ? 'Envoyer le message' : 'Send message');
-                }
-                if (loadingSpinner) loadingSpinner.classList.add('hidden');
-                if (submitBtn) submitBtn.disabled = false;
             }
         });
     }
-}
 
-// Téléchargement du CV
-function initCVDownload() {
+    // CV download
     const downloadBtn = document.getElementById('download-cv');
     
     if (downloadBtn) {
         downloadBtn.addEventListener('click', function(e) {
             e.preventDefault();
-            
             alert(getCurrentLanguage() === 'fr' ? 
-                "Le téléchargement du CV sera disponible prochainement." : 
-                "CV download will be available soon.");
+                "CV disponible prochainement" : 
+                "CV coming soon");
         });
     }
-}
 
-// Animation de frappe
-function initTypingAnimation() {
-    const headings = document.querySelectorAll('#accueil h1, #accueil h2');
-    
-    headings.forEach(heading => {
-        heading.classList.add('animate__animated', 'animate__fadeInUp');
-    });
-}
-
-// Basculer entre les modes sombre/clair
-function initDarkModeToggle() {
+    // Dark mode toggle
     const darkModeButtons = [
         document.getElementById('dark-mode-button'),
         document.getElementById('dark-mode-button-mobile')
@@ -292,76 +208,25 @@ function initDarkModeToggle() {
             button.addEventListener('click', () => {
                 const isDark = document.documentElement.classList.toggle('dark');
                 updateIcons(isDark);
-                document.body.style.transition = 'background-color 0.5s ease, color 0.5s ease';
             });
         }
     });
-}
 
-// Gestion des projets
-function initProjects() {
-    const projectLinks = document.querySelectorAll('.project-link');
-    
-    projectLinks.forEach(link => {
-        link.addEventListener('mouseenter', () => {
-            const icon = link.querySelector('i');
-            if (icon) {
-                icon.style.transform = 'translateX(5px)';
-                icon.style.transition = 'transform 0.3s ease';
-            }
-        });
-        
-        link.addEventListener('mouseleave', () => {
-            const icon = link.querySelector('i');
-            if (icon) {
-                icon.style.transform = 'translateX(0)';
-            }
-        });
-    });
-
-    function equalizeCardHeights() {
-        const container = document.querySelector('.projects-grid');
-        if (!container) return;
-
-        const cards = container.querySelectorAll('.project-card');
-        cards.forEach(card => {
-            card.style.height = 'auto';
-        });
-
-        let maxHeight = 0;
-        cards.forEach(card => {
-            maxHeight = Math.max(maxHeight, card.offsetHeight);
-        });
-
-        if (maxHeight > 0) {
-            cards.forEach(card => {
-                card.style.height = `${maxHeight}px`;
-            });
-        }
+    // Language toggle
+    function getCurrentLanguage() {
+        const select = document.getElementById('language-select');
+        return select ? select.value : 'fr';
     }
 
-    window.addEventListener('load', equalizeCardHeights);
-    window.addEventListener('resize', equalizeCardHeights);
-}
+    function updateTextForLanguage(language) {
+        document.querySelectorAll('[data-fr][data-en]').forEach(element => {
+            const textValue = element.getAttribute(`data-${language}`);
+            if (textValue) {
+                element.textContent = textValue;
+            }
+        });
+    }
 
-// Obtenir la langue actuelle
-function getCurrentLanguage() {
-    const select = document.getElementById('language-select');
-    return select ? select.value : 'fr';
-}
-
-// Mettre à jour le texte selon la langue
-function updateTextForLanguage(language) {
-    document.querySelectorAll('[data-fr][data-en]').forEach(element => {
-        const textValue = element.getAttribute(`data-${language}`);
-        if (textValue) {
-            element.textContent = textValue;
-        }
-    });
-}
-
-// Basculer entre les langues
-function initLanguageToggle() {
     const languageSelects = [
         document.getElementById('language-select'),
         document.getElementById('language-select-mobile')
@@ -379,29 +244,11 @@ function initLanguageToggle() {
                 });
                 
                 updateTextForLanguage(language);
-                
-                const btnText = document.getElementById('btn-text');
-                if (btnText) {
-                    const btnTextContent = btnText.getAttribute(`data-${language}`);
-                    if (btnTextContent) {
-                        btnText.textContent = btnTextContent;
-                    }
-                }
-
-                const projectLinks = document.querySelectorAll('.project-link');
-                projectLinks.forEach(link => {
-                    const linkText = link.getAttribute(`data-${language}`);
-                    if (linkText && link.querySelector('span')) {
-                        link.querySelector('span').textContent = linkText;
-                    }
-                });
             });
         }
     });
-}
 
-// Bouton retour en haut
-function initBackToTopButton() {
+    // Back to top button
     const backToTopButton = document.getElementById('back-to-top');
     
     if (backToTopButton) {
@@ -423,21 +270,15 @@ function initBackToTopButton() {
             });
         });
     }
-}
 
-// Protection contre l'inspection
-document.addEventListener("contextmenu", event => event.preventDefault());
-document.addEventListener("keydown", event => {
-    if (
-        event.ctrlKey ||
-        event.key === "F12" ||
-        event.key === "F5" ||
-        (event.ctrlKey && event.key === "s") ||
-        (event.ctrlKey && event.key === "u") ||
-        (event.ctrlKey && event.shiftKey && event.key === "i") ||
-        (event.ctrlKey && event.shiftKey && event.key === "c") ||
-        (event.ctrlKey && event.shiftKey && event.key === "j")
-    ) {
-        event.preventDefault();
-    }
+    // Protection
+    document.addEventListener("contextmenu", event => event.preventDefault());
+    document.addEventListener("keydown", event => {
+        if (event.ctrlKey || event.key === "F12") {
+            event.preventDefault();
+        }
+    });
+
+    // Show body
+    document.body.style.display = 'block';
 });
