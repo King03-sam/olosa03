@@ -1,4 +1,4 @@
-/* Styles principaux pour Portfolio - Par  OLOJEDE Samuel */
+/* Styles principaux pour Portfolio - OLOJEDE Samuel */
 
 body {
     display: none; /* Sera affiché par JavaScript après chargement */
@@ -14,6 +14,10 @@ body {
 
 .dark .bg-gray-900 {
     background-color: #000000 !important;
+}
+
+.dark .bg-gray-900\/90 {
+    background-color: rgba(0, 0, 0, 0.9) !important;
 }
 
 .dark .bg-gray-800\/50 {
@@ -265,7 +269,7 @@ body {
     align-items: center;
     padding: 0.5rem 1rem;
     background-color: #2563EB;
-    color: white;
+    color: white !important;
     border-radius: 9999px;
     font-weight: 500;
     transition: all 0.3s ease;
@@ -279,22 +283,33 @@ body {
 
 .project-link i {
     margin-left: 0.5rem;
+    transition: transform 0.3s ease;
 }
 
-.dot-indicator {
-    display: inline-block;
-    width: 8px;
-    height: 8px;
+.project-link:hover i {
+    transform: translateX(4px);
+}
+
+/* Réseaux sociaux - correction de l'affichage */
+.social-card .flex {
+    display: flex;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.social-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
     border-radius: 50%;
-    background-color: #D1D5DB;
-    margin: 0 4px;
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    cursor: pointer;
+    transition: all 0.3s ease;
 }
 
-.dot-indicator.active {
-    background-color: #2563EB;
-    transform: scale(1.2);
+.social-icon i {
+    font-size: 1rem;
 }
 
 /* Navigation active link style */
@@ -432,6 +447,17 @@ body {
 
 .social-icon:hover::before {
     opacity: 1;
+}
+
+/* Footer - hauteur réduite */
+footer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: #000000;
+}
+
+footer p {
+    margin-bottom: 0.25rem;
 }
 
 /* Form animations */
