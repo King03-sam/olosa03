@@ -1,67 +1,74 @@
-/* Styles principaux pour Portfolio - OLOJEDE Samuel */
-
+/* Reset et styles de base */
 body {
-    display: none; /* Sera affiché par JavaScript après chargement */
+    display: none;
     overflow-x: hidden;
     font-feature-settings: "ss01", "ss02", "ss03";
     -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
 }
 
-/* Mode sombre - noir foncé */
+/* Mode sombre */
 .dark {
-    background-color: #000000 !important;
+    background-color: #000000;
 }
 
 .dark .bg-gray-900 {
-    background-color: #000000 !important;
+    background-color: #000000;
 }
 
 .dark .bg-gray-900\/90 {
-    background-color: rgba(0, 0, 0, 0.9) !important;
+    background-color: rgba(0, 0, 0, 0.9);
 }
 
 .dark .bg-gray-800\/50 {
-    background-color: rgba(0, 0, 0, 0.8) !important;
+    background-color: rgba(0, 0, 0, 0.8);
 }
 
 .dark .bg-gray-800 {
-    background-color: #0A0A0A !important;
+    background-color: #0A0A0A;
 }
 
-/* Scroll bar styling */
+/* Scrollbar */
 ::-webkit-scrollbar {
     width: 8px;
     height: 8px;
 }
+
 ::-webkit-scrollbar-track {
     background: #f1f1f1;
 }
+
 .dark ::-webkit-scrollbar-track {
     background: #0A0A0A;
 }
+
 ::-webkit-scrollbar-thumb {
     background: #2563EB;
     border-radius: 4px;
 }
+
 ::-webkit-scrollbar-thumb:hover {
     background: #1e40af;
 }
 
-/* Correction des couleurs de texte */
-.dark .text-gray-200 {
-    color: #FFFFFF;
-}
-.dark .text-gray-400 {
-    color: #E5E7EB;
-}
+/* Typographie */
 .text-gray-800 {
     color: #000000;
 }
+
 .text-gray-600 {
     color: #1F2937;
 }
 
-/* Animations on scroll */
+.dark .text-gray-200 {
+    color: #FFFFFF;
+}
+
+.dark .text-gray-400 {
+    color: #E5E7EB;
+}
+
+/* Animations */
 .animate-on-scroll {
     opacity: 0;
     transform: translateY(30px);
@@ -93,7 +100,7 @@ body {
     transform: scale(1);
 }
 
-/* Section titles animation */
+/* Titres de section */
 .section-title {
     position: relative;
     display: inline-block;
@@ -116,7 +123,7 @@ body {
     left: calc(50% - 20px);
 }
 
-/* Apple-like button style */
+/* Boutons */
 .apple-button {
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
@@ -131,7 +138,7 @@ body {
     transform: scale(0.98);
 }
 
-/* Card Apple-like design */
+/* Cartes */
 .apple-card {
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.7);
@@ -159,74 +166,31 @@ body {
     box-shadow: 0 8px 40px rgba(0, 0, 0, 0.3);
 }
 
-/* Language select styling - Fix pour assurer visibilité en mode sombre */
-#language-select, #language-select-mobile {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath fill='%23333333' d='M0 0l4 5 4-5z'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 0.5rem center;
-    background-size: 8px 5px;
-    padding-right: 1.5rem;
-    font-weight: 500;
-    text-align: center;
-    color: #000000;
-}
-
-.dark #language-select, .dark #language-select-mobile {
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='8' height='5' viewBox='0 0 8 5'%3E%3Cpath fill='%23FFFFFF' d='M0 0l4 5 4-5z'/%3E%3C/svg%3E");
-    color: #FFFFFF;
-}
-
-/* Options de select dans les deux modes */
-#language-select option, #language-select-mobile option {
-    background-color: white;
-    color: black;
-}
-
-.dark #language-select option, .dark #language-select-mobile option {
-    background-color: #1E293B;
-    color: white;
-}
-
-/* Back to top button */
-.back-to-top {
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    width: 44px;
-    height: 44px;
-    background: rgba(255, 255, 255, 0.8);
+/* Navigation */
+.nav-link.active {
     color: #2563EB;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    z-index: 99;
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+    font-weight: 600;
 }
 
-.dark .back-to-top {
-    background: rgba(30, 30, 33, 0.8);
-    color: #3B82F6;
-    border: 1px solid rgba(60, 60, 67, 0.3);
+/* Image de profil */
+.profile-image {
+    transition: all 0.5s ease;
+    animation: float 6s ease-in-out infinite;
 }
 
-.back-to-top.active {
-    opacity: 1;
-    transform: translateY(0);
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
 }
 
-/* Projects Section - Improved responsive design */
+.profile-image:hover {
+    transform: scale(1.05) rotate(5deg);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: #2563EB;
+}
+
+/* Grille de projets */
 .projects-grid {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
@@ -244,13 +208,6 @@ body {
     .projects-grid {
         grid-template-columns: repeat(3, 1fr);
     }
-}
-
-.project-card {
-    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
 }
 
 .project-card-content {
@@ -290,84 +247,7 @@ body {
     transform: translateX(4px);
 }
 
-/* Réseaux sociaux - correction de l'affichage */
-.social-card .flex {
-    display: flex;
-    justify-content: flex-start;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
-
-.social-icon {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    transition: all 0.3s ease;
-}
-
-.social-icon i {
-    font-size: 1rem;
-}
-
-/* Navigation active link style */
-.nav-link.active {
-    color: #2563EB;
-    font-weight: 600;
-}
-
-/* Enhanced animations for components */
-/* Profile image animation */
-.profile-image {
-    transition: all 0.5s ease;
-    animation: float 6s ease-in-out infinite;
-}
-
-@keyframes float {
-    0% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
-    100% { transform: translateY(0); }
-}
-
-.profile-image:hover {
-    transform: scale(1.05) rotate(5deg);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
-    border-color: #2563EB;
-}
-
-/* Button hover effects */
-.btn-hover {
-    position: relative;
-    overflow: hidden;
-}
-
-.btn-hover::after {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    width: 0;
-    height: 0;
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 50%;
-    transform: translate(-50%, -50%);
-    transition: width 0.6s, height 0.6s;
-    z-index: 0;
-}
-
-.btn-hover:hover::after {
-    width: 300px;
-    height: 300px;
-}
-
-.btn-hover span, .btn-hover i {
-    position: relative;
-    z-index: 1;
-}
-
-/* Service cards */
+/* Cartes de service */
 .service-card {
     transition: all 0.5s ease;
     border-bottom: 3px solid transparent;
@@ -406,7 +286,7 @@ body {
     width: 100%;
 }
 
-/* Contact section animations */
+/* Section contact */
 .contact-card, .social-card {
     transition: all 0.4s ease;
 }
@@ -449,18 +329,43 @@ body {
     opacity: 1;
 }
 
-/* Footer - hauteur réduite */
-footer {
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    background-color: #000000;
+/* Bouton retour en haut */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 44px;
+    height: 44px;
+    background: rgba(255, 255, 255, 0.8);
+    color: #2563EB;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 99;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
-footer p {
-    margin-bottom: 0.25rem;
+.dark .back-to-top {
+    background: rgba(30, 30, 33, 0.8);
+    color: #3B82F6;
+    border: 1px solid rgba(60, 60, 67, 0.3);
 }
 
-/* Form animations */
+.back-to-top.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Formulaire */
 .form-container {
     position: relative;
 }
@@ -505,12 +410,12 @@ footer p {
     left: 100%;
 }
 
-/* Parallax effect */
+/* Effet parallaxe */
 .parallax-bg {
     transform: translateZ(-1px) scale(1.5);
 }
 
-/* Mobile menu animation */
+/* Menu mobile */
 @keyframes slideDown {
     from { opacity: 0; transform: translateY(-20px); }
     to { opacity: 1; transform: translateY(0); }
