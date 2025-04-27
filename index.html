@@ -239,100 +239,114 @@
         </div>
     </section>
     
-    <!-- Projects Section (Nouveau) -->
+    <!-- Projects Section (Responsive Grid) -->
     <section id="projets" class="py-16 overflow-hidden">
         <div class="container mx-auto px-4">
             <h2 class="text-3xl font-bold text-center mb-12 section-title" data-fr="Mes Projets" data-en="My Projects">Mes Projets</h2>
             
-            <div class="project-slider">
-                <div class="project-slider-track flex space-x-5 px-2 pb-6">
-                    <!-- Projet 1 - Mikrotik Configuration -->
-                    <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.1s">
-                        <div class="relative overflow-hidden rounded-t-lg">
-                            <div class="bg-gradient-to-r from-primary to-accent h-48 flex items-center justify-center">
-                                <i class="fas fa-network-wired text-5xl text-white"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2" data-fr="Configuration Mikrotik" data-en="Mikrotik Configuration">Configuration Mikrotik</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Mise en place d'un réseau avec routeurs Mikrotik, incluant configuration BGP, OSPF et systèmes de sécurité." data-en="Implementation of a network with Mikrotik routers, including BGP, OSPF configurations and security systems.">
-                                Mise en place d'un réseau avec routeurs Mikrotik, incluant configuration BGP, OSPF et systèmes de sécurité.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Mikrotik</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">RouterOS</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">BGP/OSPF</span>
-                            </div>
+            <div class="projects-grid">
+                <!-- Projet 1 - Mikrotik Configuration -->
+                <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.1s">
+                    <div class="relative overflow-hidden rounded-t-lg">
+                        <div class="bg-gradient-to-r from-primary to-accent h-48 flex items-center justify-center">
+                            <i class="fas fa-network-wired text-5xl text-white"></i>
                         </div>
                     </div>
-                    
-                    <!-- Projet 2 - WiFi Zone -->
-                    <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.2s">
-                        <div class="relative overflow-hidden rounded-t-lg">
-                            <div class="bg-gradient-to-r from-secondary to-primary h-48 flex items-center justify-center">
-                                <i class="fas fa-wifi text-5xl text-white"></i>
-                            </div>
+                    <div class="p-6 project-card-content">
+                        <h3 class="text-xl font-semibold mb-2" data-fr="Configuration Mikrotik" data-en="Mikrotik Configuration">Configuration Mikrotik</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Mise en place d'un réseau avec routeurs Mikrotik, incluant configuration BGP, OSPF et systèmes de sécurité." data-en="Implementation of a network with Mikrotik routers, including BGP, OSPF configurations and security systems.">
+                            Mise en place d'un réseau avec routeurs Mikrotik, incluant configuration BGP, OSPF et systèmes de sécurité.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Mikrotik</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">RouterOS</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">BGP/OSPF</span>
                         </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2" data-fr="WiFi Zone Public" data-en="Public WiFi Zone">WiFi Zone Public</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Déploiement d'une zone WiFi publique avec portail captif, authentification par SMS et gestion des quotas de bande passante." data-en="Deployment of a public WiFi zone with captive portal, SMS authentication and bandwidth quota management.">
-                                Déploiement d'une zone WiFi publique avec portail captif, authentification par SMS et gestion des quotas de bande passante.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Hotspot</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">WiFi</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">CaptivePortal</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Projet 3 - Sécurisation WiFi Entreprise -->
-                    <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.3s">
-                        <div class="relative overflow-hidden rounded-t-lg">
-                            <div class="bg-gradient-to-r from-accent to-secondary h-48 flex items-center justify-center">
-                                <i class="fas fa-shield-alt text-5xl text-white"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2" data-fr="Sécurisation WiFi Entreprise" data-en="Enterprise WiFi Security">Sécurisation WiFi Entreprise</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Implémentation d'un système WiFi d'entreprise sécurisé avec RADIUS, authentification WPA-Enterprise et segmentation des réseaux." data-en="Implementation of a secure enterprise WiFi system with RADIUS, WPA-Enterprise authentication and network segmentation.">
-                                Implémentation d'un système WiFi d'entreprise sécurisé avec RADIUS, authentification WPA-Enterprise et segmentation des réseaux.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">WPA-Enterprise</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">RADIUS</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">VLAN</span>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- Projet 4 - Migration Infrastructure -->
-                    <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.4s">
-                        <div class="relative overflow-hidden rounded-t-lg">
-                            <div class="bg-gradient-to-r from-primary to-secondary h-48 flex items-center justify-center">
-                                <i class="fas fa-cloud text-5xl text-white"></i>
-                            </div>
-                        </div>
-                        <div class="p-6">
-                            <h3 class="text-xl font-semibold mb-2" data-fr="Migration Infrastructure Réseau" data-en="Network Infrastructure Migration">Migration Infrastructure Réseau</h3>
-                            <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Planification et mise en œuvre d'une migration d'infrastructure réseau vers une solution Mikrotik haute disponibilité." data-en="Planning and implementation of a network infrastructure migration to a high-availability Mikrotik solution.">
-                                Planification et mise en œuvre d'une migration d'infrastructure réseau vers une solution Mikrotik haute disponibilité.
-                            </p>
-                            <div class="flex flex-wrap gap-2">
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">HA Cluster</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Load Balancing</span>
-                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Failover</span>
-                            </div>
+                        <div class="project-card-footer">
+                            <a href="#" class="project-link" data-fr="Voir le projet" data-en="View project">
+                                <span>Voir le projet</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
                 </div>
                 
-                <!-- Indicateurs de navigation -->
-                <div class="flex justify-center mt-6">
-                    <div class="dot-indicator active" data-index="0"></div>
-                    <div class="dot-indicator" data-index="1"></div>
-                    <div class="dot-indicator" data-index="2"></div>
-                    <div class="dot-indicator" data-index="3"></div>
+                <!-- Projet 2 - WiFi Zone -->
+                <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.2s">
+                    <div class="relative overflow-hidden rounded-t-lg">
+                        <div class="bg-gradient-to-r from-secondary to-primary h-48 flex items-center justify-center">
+                            <i class="fas fa-wifi text-5xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 project-card-content">
+                        <h3 class="text-xl font-semibold mb-2" data-fr="WiFi Zone Public" data-en="Public WiFi Zone">WiFi Zone Public</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Déploiement d'une zone WiFi publique avec portail captif, authentification par SMS et gestion des quotas de bande passante." data-en="Deployment of a public WiFi zone with captive portal, SMS authentication and bandwidth quota management.">
+                            Déploiement d'une zone WiFi publique avec portail captif, authentification par SMS et gestion des quotas de bande passante.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Hotspot</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">WiFi</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">CaptivePortal</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="#" class="project-link" data-fr="Voir le projet" data-en="View project">
+                                <span>Voir le projet</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 3 - Sécurisation WiFi Entreprise -->
+                <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.3s">
+                    <div class="relative overflow-hidden rounded-t-lg">
+                        <div class="bg-gradient-to-r from-accent to-secondary h-48 flex items-center justify-center">
+                            <i class="fas fa-shield-alt text-5xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 project-card-content">
+                        <h3 class="text-xl font-semibold mb-2" data-fr="Sécurisation WiFi Entreprise" data-en="Enterprise WiFi Security">Sécurisation WiFi Entreprise</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Implémentation d'un système WiFi d'entreprise sécurisé avec RADIUS, authentification WPA-Enterprise et segmentation des réseaux." data-en="Implementation of a secure enterprise WiFi system with RADIUS, WPA-Enterprise authentication and network segmentation.">
+                            Implémentation d'un système WiFi d'entreprise sécurisé avec RADIUS, authentification WPA-Enterprise et segmentation des réseaux.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">WPA-Enterprise</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">RADIUS</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">VLAN</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="#" class="project-link" data-fr="Voir le projet" data-en="View project">
+                                <span>Voir le projet</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Projet 4 - Migration Infrastructure -->
+                <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.4s">
+                    <div class="relative overflow-hidden rounded-t-lg">
+                        <div class="bg-gradient-to-r from-primary to-secondary h-48 flex items-center justify-center">
+                            <i class="fas fa-cloud text-5xl text-white"></i>
+                        </div>
+                    </div>
+                    <div class="p-6 project-card-content">
+                        <h3 class="text-xl font-semibold mb-2" data-fr="Migration Infrastructure Réseau" data-en="Network Infrastructure Migration">Migration Infrastructure Réseau</h3>
+                        <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Planification et mise en œuvre d'une migration d'infrastructure réseau vers une solution Mikrotik haute disponibilité." data-en="Planning and implementation of a network infrastructure migration to a high-availability Mikrotik solution.">
+                            Planification et mise en œuvre d'une migration d'infrastructure réseau vers une solution Mikrotik haute disponibilité.
+                        </p>
+                        <div class="flex flex-wrap gap-2 mb-4">
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">HA Cluster</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Load Balancing</span>
+                            <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Failover</span>
+                        </div>
+                        <div class="project-card-footer">
+                            <a href="#" class="project-link" data-fr="Voir le projet" data-en="View project">
+                                <span>Voir le projet</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -487,7 +501,7 @@
                     <div class="apple-card p-6 social-card">
                         <h3 class="text-xl font-semibold mb-4" data-fr="Réseaux Sociaux" data-en="Social Networks">Réseaux Sociaux</h3>
                         
-                        <div class="flex space-x-4">
+                        <div class="flex flex-wrap gap-4">
                             <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition hover:scale-110 transform duration-300 social-icon">
                                 <i class="fab fa-linkedin-in"></i>
                             </a>
@@ -542,11 +556,11 @@
         </div>
     </section>
 
-    <!-- Footer-pied de page  -->
-    <footer class="bg-gray-900 text-white py-8">
+    <!-- Footer-pied de page (réduit) -->
+    <footer class="bg-gray-900 text-white py-4">
         <div class="container mx-auto px-4">
             <div class="flex flex-col md:flex-row justify-between items-center">
-                <div class="mb-4 md:mb-0">
+                <div class="mb-2 md:mb-0">
                     <p class="text-lg font-semibold">
                         <span class="text-secondary">OLOJEDE</span> Samuel
                     </p>
