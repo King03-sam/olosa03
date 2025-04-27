@@ -7,9 +7,11 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
-    <link rel="stylesheet" href="style.css">
     
-<!-- EmailJS -->
+    <!-- Polices Apple-like -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap">
+    
+    <!-- EmailJS -->
     <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <script type="text/javascript">
         (function() {
@@ -17,6 +19,9 @@
         })();
     </script>
 
+    <!-- Liens vers les fichiers CSS et JS externes -->
+    <link rel="stylesheet" href="style.css">
+    
     <script>
         document.addEventListener("DOMContentLoaded", function() {
             document.body.style.display = "block";
@@ -32,9 +37,17 @@
                         primary: '#2563EB', // Bleu vibrant
                         secondary: '#E11D48', // Rouge vif
                         accent: '#06B6D4', // Turquoise
+                        apple: {
+                            gray: {
+                                100: '#F5F5F7',
+                                200: '#E8E8ED',
+                                800: '#1D1D1F',
+                                900: '#0B0B0C',
+                            }
+                        }
                     },
                     fontFamily: {
-                        sans: ['Poppins', 'sans-serif'],
+                        sans: ['Inter', 'Helvetica', 'Arial', 'sans-serif'],
                     },
                     animation: {
                         'fade-in': 'fadeIn 1s ease-in-out',
@@ -79,8 +92,6 @@
             }
         });
     </script>
-
-    
 </head>
 <body class="font-sans bg-white dark:bg-gray-900 text-gray-800 dark:text-gray-200 transition-colors duration-300">
     <!-- Header/Navigation -->
@@ -91,17 +102,48 @@
             </a>
             
             <!-- Mobile Menu Button -->
-            <button id="menu-toggle" class="md:hidden text-gray-800 dark:text-gray-200">
-                <i class="fas fa-bars text-xl"></i>
-            </button>
+            <div class="flex items-center md:hidden">
+                <!-- Language Toggle (Mobile) -->
+                <div class="mr-4 text-gray-700 dark:text-gray-300 hover:text-primary p-2 rounded-full">
+                    <select id="language-select-mobile" class="appearance-none bg-transparent border-none focus:outline-none cursor-pointer">
+                        <option value="fr" selected>FR</option>
+                        <option value="en">EN</option>
+                    </select>
+                </div>
+                
+                <!-- Dark Mode Toggle (Mobile) -->
+                <button id="dark-mode-button-mobile" class="mr-4 text-gray-700 dark:text-gray-300 hover:text-primary transition p-2 rounded-full focus:outline-none" aria-label="Activer/désactiver le mode sombre">
+                    <i id="dark-icon-mobile" class="fas fa-moon text-gray-700 dark:text-gray-300"></i>
+                    <i id="light-icon-mobile" class="fas fa-sun text-gray-700 dark:text-gray-300 hidden"></i>
+                </button>
+                
+                <button id="menu-toggle" class="text-gray-800 dark:text-gray-200">
+                    <i class="fas fa-bars text-xl"></i>
+                </button>
+            </div>
             
             <!-- Desktop Navigation -->
             <nav class="hidden md:block">
-                <ul class="flex space-x-6">
-                    <li><a href="#accueil" class="hover:text-primary transition nav-link">Accueil</a></li>
-                    <li><a href="#a-propos" class="hover:text-primary transition nav-link">À propos</a></li>
-                    <li><a href="#services" class="hover:text-primary transition nav-link">Services</a></li>
-                    <li><a href="#contact" class="hover:text-primary transition nav-link">Contact</a></li>
+                <ul class="flex space-x-6 items-center">
+                    <li><a href="#accueil" class="hover:text-primary transition nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                    <li><a href="#a-propos" class="hover:text-primary transition nav-link" data-fr="À propos" data-en="About">À propos</a></li>
+                    <li><a href="#projets" class="hover:text-primary transition nav-link" data-fr="Projets" data-en="Projects">Projets</a></li>
+                    <li><a href="#services" class="hover:text-primary transition nav-link" data-fr="Services" data-en="Services">Services</a></li>
+                    <li><a href="#contact" class="hover:text-primary transition nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
+                    <li class="flex items-center">
+                        <div class="relative flex items-center">
+                            <select id="language-select" class="appearance-none bg-transparent border-none focus:outline-none cursor-pointer text-gray-700 dark:text-gray-300 hover:text-primary p-2 rounded-full">
+                                <option value="fr" selected>FR</option>
+                                <option value="en">EN</option>
+                            </select>
+                        </div>
+                    </li>
+                    <li class="flex items-center">
+                        <button id="dark-mode-button" class="text-gray-700 dark:text-gray-300 hover:text-primary transition p-2 rounded-full focus:outline-none" aria-label="Activer/désactiver le mode sombre">
+                            <i id="dark-icon" class="fas fa-moon text-gray-700 dark:text-gray-300"></i>
+                            <i id="light-icon" class="fas fa-sun text-gray-700 dark:text-gray-300 hidden"></i>
+                        </button>
+                    </li>
                 </ul>
             </nav>
         </div>
@@ -109,10 +151,11 @@
         <!-- Mobile Navigation -->
         <nav id="mobile-menu" class="hidden bg-white dark:bg-gray-800 md:hidden">
             <ul class="container mx-auto px-4 py-3 space-y-3">
-                <li><a href="#accueil" class="block hover:text-primary transition nav-link">Accueil</a></li>
-                <li><a href="#a-propos" class="block hover:text-primary transition nav-link">À propos</a></li>
-                <li><a href="#services" class="block hover:text-primary transition nav-link">Services</a></li>
-                <li><a href="#contact" class="block hover:text-primary transition nav-link">Contact</a></li>
+                <li><a href="#accueil" class="block hover:text-primary transition nav-link" data-fr="Accueil" data-en="Home">Accueil</a></li>
+                <li><a href="#a-propos" class="block hover:text-primary transition nav-link" data-fr="À propos" data-en="About">À propos</a></li>
+                <li><a href="#projets" class="block hover:text-primary transition nav-link" data-fr="Projets" data-en="Projects">Projets</a></li>
+                <li><a href="#services" class="block hover:text-primary transition nav-link" data-fr="Services" data-en="Services">Services</a></li>
+                <li><a href="#contact" class="block hover:text-primary transition nav-link" data-fr="Contact" data-en="Contact">Contact</a></li>
             </ul>
         </nav>
     </header>
@@ -123,21 +166,21 @@
         
         <div class="container mx-auto px-4 grid md:grid-cols-2 gap-8 items-center relative z-10">
             <div class="order-2 md:order-1 animate-slide-right">
-                <p class="text-lg mb-2 animate_animated animate_fadeIn">Salut, je suis</p>
-                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate_animated animate_fadeInUp" style="animation-delay: 0.2s">
+                <p class="text-lg mb-2 animate__animated animate__fadeIn" data-fr="Salut, je suis" data-en="Hi, I am">Salut, je suis</p>
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 animate__animated animate__fadeInUp" style="animation-delay: 0.2s">
                     OLOJEDE Samuel
                 </h1>
-                <h2 class="text-xl md:text-2xl mb-6 text-secondary dark:text-accent animate_animated animate_fadeInUp" style="animation-delay: 0.4s">
+                <h2 class="text-xl md:text-2xl mb-6 text-secondary dark:text-accent animate__animated animate__fadeInUp" style="animation-delay: 0.4s" data-fr="Administrateur Systèmes et Réseaux Informatiques" data-en="Systems and Network Administrator">
                     Administrateur Systèmes et Réseaux Informatiques
                 </h2>
-                <p class="mb-8 text-gray-600 dark:text-gray-400 max-w-lg animate_animated animate_fadeInUp" style="animation-delay: 0.6s">
+                <p class="mb-8 text-gray-600 dark:text-gray-400 max-w-lg animate__animated animate__fadeInUp" style="animation-delay: 0.6s" data-fr="Bienvenue sur mon portfolio. Je suis spécialisé dans l'administration et la gestion des infrastructures informatiques." data-en="Welcome to my portfolio. I specialize in the administration and management of IT infrastructures.">
                     Bienvenue sur mon portfolio. Je suis spécialisé dans l'administration et la gestion des infrastructures informatiques.
                 </p>
-                <div class="flex flex-wrap gap-4 animate_animated animate_fadeInUp" style="animation-delay: 0.8s">
-                    <a href="#contact" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-lg transition shadow-lg hover:shadow-xl hover:-translate-y-1 duration-300 btn-hover">
+                <div class="flex flex-wrap gap-4 animate__animated animate__fadeInUp" style="animation-delay: 0.8s">
+                    <a href="#contact" class="px-6 py-3 bg-primary hover:bg-primary/90 text-white rounded-full shadow-lg hover:shadow-xl hover:-translate-y-1 duration-300 apple-button" data-fr="Me contacter" data-en="Contact me">
                         Me contacter
                     </a>
-                    <a href="#" id="download-cv" class="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-lg transition hover:-translate-y-1 duration-300 btn-hover" target="_blank">
+                    <a href="#" id="download-cv" class="px-6 py-3 border border-primary text-primary hover:bg-primary/10 rounded-full transition hover:-translate-y-1 duration-300 apple-button" target="_blank" data-fr="Télécharger CV" data-en="Download CV">
                         Télécharger CV
                     </a>
                 </div>
@@ -153,39 +196,39 @@
     <!-- About Section -->
     <section id="a-propos" class="py-16 bg-gray-50 dark:bg-gray-800/50 overflow-hidden">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 section-title">À propos de moi</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 section-title" data-fr="À propos de moi" data-en="About me">À propos de moi</h2>
             
             <div class="max-w-3xl mx-auto">
                 <div class="mb-8 animate-on-scroll" data-animation="fade-up" style="animation-delay: 0.2s">
-                    <p class="text-lg mb-4">
+                    <p class="text-lg mb-4" data-fr="Étudiant en deuxième année d'informatique à ESGIS, je me spécialise dans les systèmes et réseaux informatiques." data-en="As a second-year computer science student at ESGIS, I specialize in computer systems and networks.">
                         Étudiant en deuxième année d'informatique à ESGIS, je me spécialise dans les systèmes et réseaux informatiques.
                     </p>
-                    <p class="text-lg mb-4">
+                    <p class="text-lg mb-4" data-fr="En tant qu'Administrateur Système et Réseau, je possède des compétences avancées en gestion d'infrastructure, sécurité des réseaux, et résolution de problèmes techniques complexes." data-en="As a System and Network Administrator, I have advanced skills in infrastructure management, network security, and solving complex technical problems.">
                         En tant qu'Administrateur Système et Réseau, je possède des compétences avancées en gestion d'infrastructure, 
                         sécurité des réseaux, et résolution de problèmes techniques complexes.
                     </p>
                 </div>
                 
                 <div class="grid md:grid-cols-2 gap-6">
-                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md animate-on-scroll card-hover" data-animation="fade-right" style="animation-delay: 0.4s">
-                        <h3 class="text-xl font-semibold mb-3 flex items-center">
+                    <div class="apple-card p-6 animate-on-scroll" data-animation="fade-right" style="animation-delay: 0.4s">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center" data-fr="Formation" data-en="Education">
                             <i class="fas fa-graduation-cap mr-2 text-primary"></i>
                             Formation
                         </h3>
                         <ul class="space-y-2">
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
-                                <span>2ème Année Informatique à ESGIS</span>
+                                <span data-fr="2ème Année Informatique à ESGIS" data-en="2nd Year Computer Science at ESGIS">2ème Année Informatique à ESGIS</span>
                             </li>
                             <li class="flex items-start">
                                 <i class="fas fa-check-circle text-primary mt-1 mr-2"></i>
-                                <span>Spécialisation en Systèmes et Réseaux</span>
+                                <span data-fr="Spécialisation en Systèmes et Réseaux" data-en="Specialization in Systems and Networks">Spécialisation en Systèmes et Réseaux</span>
                             </li>
                         </ul>
                     </div>
                     
-                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md animate-on-scroll card-hover" data-animation="fade-left" style="animation-delay: 0.4s">
-                        <h3 class="text-xl font-semibold mb-3 flex items-center">
+                    <div class="apple-card p-6 animate-on-scroll" data-animation="fade-left" style="animation-delay: 0.4s">
+                        <h3 class="text-xl font-semibold mb-3 flex items-center" data-fr="Localisation" data-en="Location">
                             <i class="fas fa-map-marker-alt mr-2 text-primary"></i>
                             Localisation
                         </h3>
@@ -195,92 +238,191 @@
             </div>
         </div>
     </section>
+    
+    <!-- Projects Section (Nouveau) -->
+    <section id="projets" class="py-16 overflow-hidden">
+        <div class="container mx-auto px-4">
+            <h2 class="text-3xl font-bold text-center mb-12 section-title" data-fr="Mes Projets" data-en="My Projects">Mes Projets</h2>
+            
+            <div class="project-slider">
+                <div class="project-slider-track flex space-x-5 px-2 pb-6">
+                    <!-- Projet 1 - Mikrotik Configuration -->
+                    <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.1s">
+                        <div class="relative overflow-hidden rounded-t-lg">
+                            <div class="bg-gradient-to-r from-primary to-accent h-48 flex items-center justify-center">
+                                <i class="fas fa-network-wired text-5xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-fr="Configuration Mikrotik" data-en="Mikrotik Configuration">Configuration Mikrotik</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Mise en place d'un réseau avec routeurs Mikrotik, incluant configuration BGP, OSPF et systèmes de sécurité." data-en="Implementation of a network with Mikrotik routers, including BGP, OSPF configurations and security systems.">
+                                Mise en place d'un réseau avec routeurs Mikrotik, incluant configuration BGP, OSPF et systèmes de sécurité.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Mikrotik</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">RouterOS</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">BGP/OSPF</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Projet 2 - WiFi Zone -->
+                    <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.2s">
+                        <div class="relative overflow-hidden rounded-t-lg">
+                            <div class="bg-gradient-to-r from-secondary to-primary h-48 flex items-center justify-center">
+                                <i class="fas fa-wifi text-5xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-fr="WiFi Zone Public" data-en="Public WiFi Zone">WiFi Zone Public</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Déploiement d'une zone WiFi publique avec portail captif, authentification par SMS et gestion des quotas de bande passante." data-en="Deployment of a public WiFi zone with captive portal, SMS authentication and bandwidth quota management.">
+                                Déploiement d'une zone WiFi publique avec portail captif, authentification par SMS et gestion des quotas de bande passante.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Hotspot</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">WiFi</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">CaptivePortal</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Projet 3 - Sécurisation WiFi Entreprise -->
+                    <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.3s">
+                        <div class="relative overflow-hidden rounded-t-lg">
+                            <div class="bg-gradient-to-r from-accent to-secondary h-48 flex items-center justify-center">
+                                <i class="fas fa-shield-alt text-5xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-fr="Sécurisation WiFi Entreprise" data-en="Enterprise WiFi Security">Sécurisation WiFi Entreprise</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Implémentation d'un système WiFi d'entreprise sécurisé avec RADIUS, authentification WPA-Enterprise et segmentation des réseaux." data-en="Implementation of a secure enterprise WiFi system with RADIUS, WPA-Enterprise authentication and network segmentation.">
+                                Implémentation d'un système WiFi d'entreprise sécurisé avec RADIUS, authentification WPA-Enterprise et segmentation des réseaux.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">WPA-Enterprise</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">RADIUS</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">VLAN</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Projet 4 - Migration Infrastructure -->
+                    <div class="project-card apple-card animate-on-scroll" data-animation="zoom-in" style="animation-delay: 0.4s">
+                        <div class="relative overflow-hidden rounded-t-lg">
+                            <div class="bg-gradient-to-r from-primary to-secondary h-48 flex items-center justify-center">
+                                <i class="fas fa-cloud text-5xl text-white"></i>
+                            </div>
+                        </div>
+                        <div class="p-6">
+                            <h3 class="text-xl font-semibold mb-2" data-fr="Migration Infrastructure Réseau" data-en="Network Infrastructure Migration">Migration Infrastructure Réseau</h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Planification et mise en œuvre d'une migration d'infrastructure réseau vers une solution Mikrotik haute disponibilité." data-en="Planning and implementation of a network infrastructure migration to a high-availability Mikrotik solution.">
+                                Planification et mise en œuvre d'une migration d'infrastructure réseau vers une solution Mikrotik haute disponibilité.
+                            </p>
+                            <div class="flex flex-wrap gap-2">
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">HA Cluster</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Load Balancing</span>
+                                <span class="px-3 py-1 text-xs font-medium bg-primary/10 text-primary rounded-full">Failover</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Indicateurs de navigation -->
+                <div class="flex justify-center mt-6">
+                    <div class="dot-indicator active" data-index="0"></div>
+                    <div class="dot-indicator" data-index="1"></div>
+                    <div class="dot-indicator" data-index="2"></div>
+                    <div class="dot-indicator" data-index="3"></div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Services Section -->
-    <section id="services" class="py-16 overflow-hidden">
+    <section id="services" class="py-16 bg-gray-50 dark:bg-gray-800/50 overflow-hidden">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 section-title">Mes Services</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 section-title" data-fr="Mes Services" data-en="My Services">Mes Services</h2>
             
             <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.1s">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                <div class="apple-card p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.1s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-network-wired text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Commutation</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <h3 class="text-xl font-semibold mb-3" data-fr="Commutation" data-en="Switching">Commutation</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Configuration et gestion des commutateurs réseau pour optimiser la communication interne." data-en="Configuration and management of network switches to optimize internal communication.">
                         Configuration et gestion des commutateurs réseau pour optimiser la communication interne.
                     </p>
-                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more" data-fr="Demander un devis" data-en="Request a quote">
                         Demander un devis
                         <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.2s">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                <div class="apple-card p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.2s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-route text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Routage</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <h3 class="text-xl font-semibold mb-3" data-fr="Routage" data-en="Routing">Routage</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Mise en place et configuration de solutions de routage pour des réseaux efficaces et sécurisés." data-en="Implementation and configuration of routing solutions for efficient and secure networks.">
                         Mise en place et configuration de solutions de routage pour des réseaux efficaces et sécurisés.
                     </p>
-                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more" data-fr="Demander un devis" data-en="Request a quote">
                         Demander un devis
                         <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.3s">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                <div class="apple-card p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.3s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-tools text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Installation et Dépannage</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <h3 class="text-xl font-semibold mb-3" data-fr="Installation et Dépannage" data-en="Installation and Troubleshooting">Installation et Dépannage</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Installation, maintenance et dépannage d'infrastructures réseau complètes." data-en="Installation, maintenance and troubleshooting of complete network infrastructures.">
                         Installation, maintenance et dépannage d'infrastructures réseau complètes.
                     </p>
-                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more" data-fr="Demander un devis" data-en="Request a quote">
                         Demander un devis
                         <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.4s">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                <div class="apple-card p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.4s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-bug text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Résolution de Problèmes Réseau</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <h3 class="text-xl font-semibold mb-3" data-fr="Résolution de Problèmes Réseau" data-en="Network Troubleshooting">Résolution de Problèmes Réseau</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Diagnostic et résolution des problèmes tels que bouclage, coupures de câbles et autres dysfonctionnements." data-en="Diagnosis and resolution of problems such as looping, cable cuts and other malfunctions.">
                         Diagnostic et résolution des problèmes tels que bouclage, coupures de câbles et autres dysfonctionnements.
                     </p>
-                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more" data-fr="Demander un devis" data-en="Request a quote">
                         Demander un devis
                         <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.5s">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                <div class="apple-card p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.5s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-shield-alt text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Sécurité Réseau</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <h3 class="text-xl font-semibold mb-3" data-fr="Sécurité Réseau" data-en="Network Security">Sécurité Réseau</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Mise en place de solutions de sécurité pour protéger vos infrastructures contre les menaces." data-en="Implementation of security solutions to protect your infrastructures against threats.">
                         Mise en place de solutions de sécurité pour protéger vos infrastructures contre les menaces.
                     </p>
-                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more" data-fr="Demander un devis" data-en="Request a quote">
                         Demander un devis
                         <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.6s">
-                    <div class="w-14 h-14 bg-primary/10 rounded-lg flex items-center justify-center mb-4 service-icon">
+                <div class="apple-card p-6 animate-on-scroll service-card" data-animation="zoom-in" style="animation-delay: 0.6s">
+                    <div class="w-14 h-14 bg-primary/10 rounded-full flex items-center justify-center mb-4 service-icon">
                         <i class="fas fa-server text-2xl text-primary"></i>
                     </div>
-                    <h3 class="text-xl font-semibold mb-3">Administration Système</h3>
-                    <p class="text-gray-600 dark:text-gray-400 mb-4">
+                    <h3 class="text-xl font-semibold mb-3" data-fr="Administration Système" data-en="System Administration">Administration Système</h3>
+                    <p class="text-gray-600 dark:text-gray-400 mb-4" data-fr="Gestion et maintenance des serveurs et systèmes d'exploitation pour assurer leur bon fonctionnement." data-en="Management and maintenance of servers and operating systems to ensure their proper functioning.">
                         Gestion et maintenance des serveurs et systèmes d'exploitation pour assurer leur bon fonctionnement.
                     </p>
-                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more">
+                    <a href="#contact" class="text-primary hover:text-primary/80 font-medium inline-flex items-center transition group read-more" data-fr="Demander un devis" data-en="Request a quote">
                         Demander un devis
                         <i class="fas fa-arrow-right ml-2 text-sm transform transition-transform duration-300 group-hover:translate-x-1"></i>
                     </a>
@@ -290,14 +432,14 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-16 bg-gray-50 dark:bg-gray-800/50 overflow-hidden">
+    <section id="contact" class="py-16 overflow-hidden">
         <div class="container mx-auto px-4">
-            <h2 class="text-3xl font-bold text-center mb-12 section-title">Me Contacter</h2>
+            <h2 class="text-3xl font-bold text-center mb-12 section-title" data-fr="Me Contacter" data-en="Contact Me">Me Contacter</h2>
             
             <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
                 <div class="animate-on-scroll" data-animation="fade-right" style="animation-delay: 0.2s">
-                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md mb-6 hover:shadow-lg transition-all duration-300 contact-card">
-                        <h3 class="text-xl font-semibold mb-4">Informations de Contact</h3>
+                    <div class="apple-card p-6 mb-6 contact-card">
+                        <h3 class="text-xl font-semibold mb-4" data-fr="Informations de Contact" data-en="Contact Information">Informations de Contact</h3>
                         
                         <div class="space-y-4">
                             <div class="flex items-start hover:-translate-y-1 transition-transform duration-300 contact-info">
@@ -305,7 +447,7 @@
                                     <i class="fas fa-phone text-primary"></i>
                                 </div>
                                 <div>
-                                    <p class="font-medium">Téléphone</p>
+                                    <p class="font-medium" data-fr="Téléphone" data-en="Phone">Téléphone</p>
                                     <a href="tel:+22897831101" class="text-gray-600 dark:text-gray-400 hover:text-primary transition">+228 97 83 11 01</a>
                                 </div>
                             </div>
@@ -315,7 +457,7 @@
                                     <i class="fas fa-envelope text-primary"></i>
                                 </div>
                                 <div>
-                                    <p class="font-medium">Email</p>
+                                    <p class="font-medium" data-fr="Email" data-en="Email">Email</p>
                                     <a href="mailto:olojedesamuel09@gmail.com" class="text-gray-600 dark:text-gray-400 hover:text-primary transition">olojedesamuel09@gmail.com</a>
                                 </div>
                             </div>
@@ -325,7 +467,7 @@
                                     <i class="fas fa-map-marker-alt text-primary"></i>
                                 </div>
                                 <div>
-                                    <p class="font-medium">Adresse</p>
+                                    <p class="font-medium" data-fr="Adresse" data-en="Address">Adresse</p>
                                     <p class="text-gray-600 dark:text-gray-400">Addidogomé-Gblinkomè</p>
                                 </div>
                             </div>
@@ -335,15 +477,15 @@
                                     <i class="fas fa-globe text-primary"></i>
                                 </div>
                                 <div>
-                                    <p class="font-medium">Site Web</p>
+                                    <p class="font-medium" data-fr="Site Web" data-en="Website">Site Web</p>
                                     <a href="http://olos3.netlify.app" target="_blank" class="text-gray-600 dark:text-gray-400 hover:text-primary transition">olos3.netlify.app</a>
                                 </div>
                             </div>
                         </div>
                     </div>
                     
-                    <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 social-card">
-                        <h3 class="text-xl font-semibold mb-4">Réseaux Sociaux</h3>
+                    <div class="apple-card p-6 social-card">
+                        <h3 class="text-xl font-semibold mb-4" data-fr="Réseaux Sociaux" data-en="Social Networks">Réseaux Sociaux</h3>
                         
                         <div class="flex space-x-4">
                             <a href="#" class="w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center text-primary hover:bg-primary hover:text-white transition hover:scale-110 transform duration-300 social-icon">
@@ -362,32 +504,32 @@
                     </div>
                 </div>
                 
-                <div class="bg-white dark:bg-gray-900 p-6 rounded-lg shadow-md hover:shadow-lg transition-all duration-300 animate-on-scroll form-container" data-animation="fade-left" style="animation-delay: 0.3s">
-                    <h3 class="text-xl font-semibold mb-4">Envoyez-moi un message</h3>
+                <div class="apple-card p-6 animate-on-scroll form-container" data-animation="fade-left" style="animation-delay: 0.3s">
+                    <h3 class="text-xl font-semibold mb-4" data-fr="Envoyez-moi un message" data-en="Send me a message">Envoyez-moi un message</h3>
                     
                     <form id="contact-form" class="space-y-4">
                         <div class="form-group transform transition-all duration-500 hover:-translate-y-1">
-                            <label for="name" class="block text-sm font-medium mb-1">Nom complet</label>
+                            <label for="name" class="block text-sm font-medium mb-1" data-fr="Nom complet" data-en="Full name">Nom complet</label>
                             <input type="text" id="name" name="name" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-base transition duration-300" required>
                         </div>
                         
                         <div class="form-group transform transition-all duration-500 hover:-translate-y-1">
-                            <label for="email" class="block text-sm font-medium mb-1">Email</label>
+                            <label for="email" class="block text-sm font-medium mb-1" data-fr="Email" data-en="Email">Email</label>
                             <input type="email" id="email" name="email" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-base transition duration-300" required>
                         </div>
                         
                         <div class="form-group transform transition-all duration-500 hover:-translate-y-1">
-                            <label for="subject" class="block text-sm font-medium mb-1">Sujet</label>
+                            <label for="subject" class="block text-sm font-medium mb-1" data-fr="Sujet" data-en="Subject">Sujet</label>
                             <input type="text" id="subject" name="subject" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-base transition duration-300" required>
                         </div>
                         
                         <div class="form-group transform transition-all duration-500 hover:-translate-y-1">
-                            <label for="message" class="block text-sm font-medium mb-1">Message</label>
+                            <label for="message" class="block text-sm font-medium mb-1" data-fr="Message" data-en="Message">Message</label>
                             <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 focus:outline-none focus:ring-2 focus:ring-primary text-base resize-none transition duration-300" required></textarea>
                         </div>
                         
-                        <button type="submit" id="submit-btn" class="w-full px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-lg transition-all duration-300 flex items-center justify-center hover:shadow-lg hover:-translate-y-1 transform submit-btn">
-                            <span id="btn-text">Envoyer le message</span>
+                        <button type="submit" id="submit-btn" class="w-full px-6 py-3 bg-primary hover:bg-primary/90 text-white font-medium rounded-full transition-all duration-300 flex items-center justify-center hover:shadow-lg hover:-translate-y-1 transform apple-button">
+                            <span id="btn-text" data-fr="Envoyer le message" data-en="Send message">Envoyer le message</span>
                             <span id="loading-spinner" class="hidden ml-2">
                                 <i class="fas fa-circle-notch fa-spin"></i>
                             </span>
@@ -408,18 +550,23 @@
                     <p class="text-lg font-semibold">
                         <span class="text-secondary">OLOJEDE</span> Samuel
                     </p>
-                    <p class="text-gray-400">Administrateur Systèmes et Réseaux</p>
+                    <p class="text-gray-400" data-fr="Administrateur Systèmes et Réseaux" data-en="Systems and Network Administrator">Administrateur Systèmes et Réseaux</p>
                 </div>
                 
                 <div class="text-center md:text-right">
-                    <p>© 2024 Tous droits réservés</p>
-                    <p class="text-gray-400">Conçu avec <span class="animate-pulse text-red-500"></span> par <strong>OLOJEDE Samuel</strong></p>
+                    <p data-fr="© 2024 Tous droits réservés" data-en="© 2024 All rights reserved">© 2024 Tous droits réservés</p>
+                    <p class="text-gray-400" data-fr="Conçu avec " data-en="Designed with ">Conçu avec <i class="fas fa-heart text-red-500 animate-pulse"></i> par <strong>OLOJEDE Samuel</strong></p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <!-- work.js-->
+    <!-- Back to top button -->
+    <button id="back-to-top" class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
+    <!-- Scripts -->
     <script src="work.js"></script>
 </body>
 </html>
