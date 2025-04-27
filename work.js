@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', function() {
     setupCVDownload();
     setupTypingAnimation();
     setupDarkModeToggle();
-    setupProjectSlider();
+    setupProjects();
     setupLanguageToggle();
     setupBackToTopButton();
     
@@ -324,186 +324,56 @@ function setupDarkModeToggle() {
     });
 }
 
-// Projet slider - Correction des bugs
-function setupProjectSlider() {
-    const sliderTrack = document.querySelector('.project-slider-track');
-    const indicators = document.querySelectorAll('.dot-indicator');
-    const cards = document.querySelectorAll('.project-card');
+// Fonction pour les projets
+function setupProjects() {
+    // Animation des liens de projet
+    const projectLinks = document.querySelectorAll('.project-link');
     
-    if (sliderTrack && indicators.length && cards.length) {
-        let currentIndex = 0;
-        let autoScrollInterval;
-        
-        // Function to calculate card width dynamically
-        const getCardWidth = () => {
-            if (cards.length > 0) {
-                const computedStyle = window.getComputedStyle(cards[0]);
-                const width = cards[0].offsetWidth;
-                const marginRight = parseFloat(computedStyle.marginRight);
-                return width + marginRight;
+    projectLinks.forEach(link => {
+        link.addEventListener('mouseenter', () => {
+            const icon = link.querySelector('i');
+            if (icon) {
+                icon.style.transform = 'translateX(5px)';
+                icon.style.transition = 'transform 0.3s ease';
             }
-            return 0;
-        };
+        });
         
-        // Calculate visible cards based on screen width
-        const getVisibleCards = () => {
-            if (window.innerWidth < 640) return 1;
-            if (window.innerWidth < 1024) return 2;
-            return 3;
-        };
-        
-        // Set indicator active state
-        const updateIndicators = (index) => {
-            indicators.forEach((indicator, i) => {
-                indicator.classList.toggle('active', i === index);
+        link.addEventListener('mouseleave', () => {
+            const icon = link.querySelector('i');
+            if (icon) {
+                icon.style.transform = 'translateX(0)';
+            }
+        });
+    });
+
+    // Assurer que les cartes de projet ont la même hauteur dans chaque rangée
+    function equalizeCardHeights() {
+        const container = document.querySelector('.projects-grid');
+        if (!container) return;
+
+        // Réinitialiser les hauteurs
+        const cards = container.querySelectorAll('.project-card');
+        cards.forEach(card => {
+            card.style.height = 'auto';
+        });
+
+        // Calculer la nouvelle hauteur
+        let maxHeight = 0;
+        cards.forEach(card => {
+            maxHeight = Math.max(maxHeight, card.offsetHeight);
+        });
+
+        // Appliquer la hauteur maximale
+        if (maxHeight > 0) {
+            cards.forEach(card => {
+                card.style.height = `${maxHeight}px`;
             });
-        };
-        
-        // Move slider to position
-        const moveSlider = (index) => {
-            const visibleCards = getVisibleCards();
-            const maxIndex = Math.max(0, cards.length - visibleCards);
-            currentIndex = Math.max(0, Math.min(index, maxIndex));
-            
-            const cardWidth = getCardWidth();
-            const offset = currentIndex * -cardWidth;
-            
-            if (sliderTrack) {
-                sliderTrack.style.transform = `translateX(${offset}px)`;
-            }
-            
-            updateIndicators(currentIndex);
-        };
-        
-        // Click on indicators
-        indicators.forEach((indicator, index) => {
-            indicator.addEventListener('click', () => {
-                moveSlider(index);
-                resetAutoScroll();
-            });
-        });
-        
-        // Responsive adjustments
-        window.addEventListener('resize', () => {
-            const newVisibleCards = getVisibleCards();
-            const newMaxIndex = Math.max(0, cards.length - newVisibleCards);
-            moveSlider(Math.min(currentIndex, newMaxIndex));
-        });
-        
-        // Touch/Swipe support
-        let startX, moveX;
-        
-        sliderTrack.addEventListener('touchstart', (e) => {
-            startX = e.touches[0].clientX;
-            resetAutoScroll();
-        });
-        
-        sliderTrack.addEventListener('touchmove', (e) => {
-            if (!startX) return;
-            moveX = e.touches[0].clientX;
-        });
-        
-        sliderTrack.addEventListener('touchend', () => {
-            if (startX && moveX) {
-                const diff = startX - moveX;
-                if (Math.abs(diff) > 50) { // Minimum swipe distance
-                    if (diff > 0) {
-                        // Swipe left - next slide
-                        moveSlider(currentIndex + 1);
-                    } else {
-                        // Swipe right - previous slide
-                        moveSlider(currentIndex - 1);
-                    }
-                }
-            }
-            startX = null;
-            moveX = null;
-            resetAutoScroll();
-        });
-        
-        // Mouse drag support
-        let isDragging = false;
-        let dragStartX = 0;
-        let dragCurrentX = 0;
-        let initialTransform = 0;
-        
-        sliderTrack.addEventListener('mousedown', (e) => {
-            isDragging = true;
-            dragStartX = e.clientX;
-            initialTransform = getComputedTranslateX(sliderTrack);
-            sliderTrack.style.transition = 'none';
-            sliderTrack.style.cursor = 'grabbing';
-            resetAutoScroll();
-            e.preventDefault();
-        });
-        
-        window.addEventListener('mousemove', (e) => {
-            if (!isDragging) return;
-            
-            dragCurrentX = e.clientX;
-            const dragDiff = dragCurrentX - dragStartX;
-            const newTransform = initialTransform + dragDiff;
-            
-            sliderTrack.style.transform = `translateX(${newTransform}px)`;
-        });
-        
-        window.addEventListener('mouseup', () => {
-            if (!isDragging) return;
-            
-            isDragging = false;
-            sliderTrack.style.cursor = 'grab';
-            sliderTrack.style.transition = 'transform 0.5s cubic-bezier(0.16, 1, 0.3, 1)';
-            
-            // Calculate which slide to snap to
-            if (dragStartX && dragCurrentX) {
-                const diff = dragStartX - dragCurrentX;
-                
-                if (Math.abs(diff) > 50) {
-                    if (diff > 0) {
-                        moveSlider(currentIndex + 1);
-                    } else {
-                        moveSlider(currentIndex - 1);
-                    }
-                } else {
-                    // Snap back to current index if drag wasn't far enough
-                    moveSlider(currentIndex);
-                }
-            }
-            
-            dragStartX = 0;
-            dragCurrentX = 0;
-            resetAutoScroll();
-        });
-        
-        // Get computed translateX value
-        function getComputedTranslateX(element) {
-            if (!element) return 0;
-            
-            const style = window.getComputedStyle(element);
-            const matrix = new DOMMatrixReadOnly(style.transform);
-            return matrix.m41;
         }
-        
-        // Function to reset auto-scroll timer
-        function resetAutoScroll() {
-            if (autoScrollInterval) {
-                clearInterval(autoScrollInterval);
-            }
-            
-            // Auto-advance slider
-            autoScrollInterval = setInterval(() => {
-                const visibleCards = getVisibleCards();
-                const maxIndex = Math.max(0, cards.length - visibleCards);
-                moveSlider((currentIndex + 1) % (maxIndex + 1));
-            }, 5000);
-        }
-        
-        // Initialize auto-scroll
-        resetAutoScroll();
-        
-        // Initial positioning
-        moveSlider(0);
     }
+
+    // Appliquer au chargement et au redimensionnement
+    window.addEventListener('load', equalizeCardHeights);
+    window.addEventListener('resize', equalizeCardHeights);
 }
 
 // Get current language
@@ -522,7 +392,7 @@ function updateTextForLanguage(language) {
     });
 }
 
-// Setup language toggle - Correction du bug
+// Setup language toggle
 function setupLanguageToggle() {
     const languageSelects = [
         document.getElementById('language-select'),
@@ -552,6 +422,15 @@ function setupLanguageToggle() {
                         btnText.textContent = btnTextContent;
                     }
                 }
+
+                // Mettre à jour le texte des liens de projet
+                const projectLinks = document.querySelectorAll('.project-link');
+                projectLinks.forEach(link => {
+                    const linkText = link.getAttribute(`data-${language}`);
+                    if (linkText && link.querySelector('span')) {
+                        link.querySelector('span').textContent = linkText;
+                    }
+                });
             });
         }
     });
